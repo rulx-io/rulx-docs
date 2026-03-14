@@ -1,0 +1,21 @@
+---
+title: 'Phase-1-Verträge'
+description: 'Der eingefrorene v1-Vertragssnapshot und seine stabilen Invarianten'
+---
+
+Dieser Abschnitt fasst den eingefrorenen Phase-1-Vertragssatz aus dem Monorepo zusammen.
+
+## Artefakte
+
+- OpenAPI-Snapshot: [openapi.json](/reference/api/openapi.json)
+- Proto-Snapshot: [runner-controller.proto](/reference/contracts/runner-controller.proto)
+
+## Stabile Invarianten
+
+Der aktuelle Vertragssnapshot benennt diese stabilen Ideen:
+
+- Job-Deliveries sind at-least-once
+- `idempotency_key` ist stabil
+- die Job-State-Machine ist fest auf `queued -> running -> succeeded/failed/canceled` gesetzt
+- Controller-Leases enthalten `issued_at` und `expires_at`
+- abgelaufene Leases dürfen neu zugewiesen werden

@@ -1,0 +1,32 @@
+---
+title: 'Troubleshooting'
+description: 'Common pre-alpha local and operator issues'
+---
+
+> Pre-alpha note: troubleshooting guidance will tighten as packaging and deployment contracts stabilize.
+
+## Controller unavailable
+
+If the controller is unavailable:
+
+- UI actions that change state become read-only or disabled
+- overview and alert surfaces may show cached or stale data
+- runner and job activity may still be happening underneath
+
+## Runner maintenance
+
+If a runner is unhealthy or you need to isolate it:
+
+1. inspect the runner
+2. drain it
+3. wait for in-flight work to settle
+4. undrain after maintenance
+
+## Gateway and trigger issues
+
+If HTTP-triggered flows do not fire as expected:
+
+- confirm the gateway is running
+- confirm the workspace binding is correct
+- confirm the flow has a valid callable interface and trigger binding
+- inspect run history and logs after the request lands

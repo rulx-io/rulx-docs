@@ -1,0 +1,26 @@
+---
+title: 'Workspaces and artifacts API'
+description: 'Workspace management plus artifact draft, version, and publish endpoints'
+---
+
+This group covers workspace identity and the artifact library model.
+
+## Workspace endpoints
+
+- `GET /v1/workspaces`
+- `POST /v1/workspaces`
+- `GET /v1/workspaces/{workspaceId}`
+- `DELETE /v1/workspaces/{workspaceId}`
+
+## Workspace artifact library
+
+- `GET /v1/w/{workspaceId}/artifacts`
+
+## Artifact lifecycle endpoints
+
+- `GET /v1/artifacts/{artifactId}`
+- `GET /v1/artifacts/{artifactId}/draft`
+- `GET /v1/artifacts/{artifactId}/drafts`
+- `POST /v1/artifacts/{artifactId}/drafts/{artifactDraftId}/merge`
+- `POST /v1/artifacts/{artifactId}/publish`
+- `GET /v1/artifacts/{artifactId}/versions`

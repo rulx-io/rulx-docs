@@ -1,122 +1,299 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Rulx Docs",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#0094D3",
+    "light": "#7FCFF2",
+    "dark": "#006F9F"
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "tabs": [
+    "global": {
+      "anchors": [
+        {
+          "anchor": "GitHub",
+          "href": "https://github.com/rulx-io/rulx",
+          "icon": "github"
+        }
+      ]
+    },
+    "languages": [
       {
-        "tab": "Guides",
-        "groups": [
+        "language": "en",
+        "default": true,
+        "tabs": [
           {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
+            "tab": "Start",
+            "groups": [
+              {
+                "group": "Getting started",
+                "pages": [
+                  "index",
+                  "quickstart"
+                ]
+              },
+              {
+                "group": "Concepts",
+                "pages": [
+                  "concepts/workspaces",
+                  "concepts/artifacts-and-versions",
+                  "concepts/runs-and-logs",
+                  "concepts/runtime-roles"
+                ]
+              }
             ]
           },
           {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+            "tab": "Build",
+            "groups": [
+              {
+                "group": "Overview",
+                "pages": [
+                  "build/overview",
+                  "build/publishing"
+                ]
+              },
+              {
+                "group": "Flows",
+                "pages": [
+                  "build/flows",
+                  "build/flows/editor",
+                  "build/flows/config",
+                  "build/flows/tests-and-triggers",
+                  "build/flows/runs"
+                ]
+              },
+              {
+                "group": "Schemas",
+                "pages": [
+                  "build/schemas",
+                  "build/schemas/editor"
+                ]
+              },
+              {
+                "group": "Code modules",
+                "pages": [
+                  "build/code-modules",
+                  "build/code-modules/editor",
+                  "build/code-modules/dependencies"
+                ]
+              }
             ]
           },
           {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+            "tab": "Operate",
+            "groups": [
+              {
+                "group": "Workspace operations",
+                "pages": [
+                  "operate/overview-and-alerts",
+                  "operate/runs",
+                  "operate/runners",
+                  "operate/settings",
+                  "operate/copilot"
+                ]
+              },
+              {
+                "group": "Self-host",
+                "pages": [
+                  "self-host/overview",
+                  "self-host/architecture",
+                  "self-host/local-development",
+                  "self-host/deployment-shape",
+                  "self-host/configuration",
+                  "self-host/rulxctl",
+                  "self-host/troubleshooting"
+                ]
+              }
             ]
           },
           {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+            "tab": "Reference",
+            "groups": [
+              {
+                "group": "API",
+                "pages": [
+                  "reference/api/introduction",
+                  "reference/api/workspaces-and-artifacts",
+                  "reference/api/runs-and-jobs",
+                  "reference/api/runners-and-services",
+                  "reference/api/triggers-and-dependencies"
+                ]
+              },
+              {
+                "group": "Contracts",
+                "pages": [
+                  "reference/contracts/phase-1",
+                  "reference/contracts/runner-controller",
+                  "reference/contracts/worker-protocol"
+                ]
+              },
+              {
+                "group": "Reference",
+                "pages": [
+                  "reference/glossary"
+                ]
+              }
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
-        "groups": [
+        "language": "de",
+        "tabs": [
           {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
+            "tab": "Start",
+            "groups": [
+              {
+                "group": "Erste Schritte",
+                "pages": [
+                  "de/index",
+                  "de/quickstart"
+                ]
+              },
+              {
+                "group": "Konzepte",
+                "pages": [
+                  "de/concepts/workspaces",
+                  "de/concepts/artifacts-and-versions",
+                  "de/concepts/runs-and-logs",
+                  "de/concepts/runtime-roles"
+                ]
+              }
             ]
           },
           {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+            "tab": "Build",
+            "groups": [
+              {
+                "group": "Überblick",
+                "pages": [
+                  "de/build/overview",
+                  "de/build/publishing"
+                ]
+              },
+              {
+                "group": "Flows",
+                "pages": [
+                  "de/build/flows",
+                  "de/build/flows/editor",
+                  "de/build/flows/config",
+                  "de/build/flows/tests-and-triggers",
+                  "de/build/flows/runs"
+                ]
+              },
+              {
+                "group": "Schemas",
+                "pages": [
+                  "de/build/schemas",
+                  "de/build/schemas/editor"
+                ]
+              },
+              {
+                "group": "Code-Module",
+                "pages": [
+                  "de/build/code-modules",
+                  "de/build/code-modules/editor",
+                  "de/build/code-modules/dependencies"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Betrieb",
+            "groups": [
+              {
+                "group": "Workspace-Betrieb",
+                "pages": [
+                  "de/operate/overview-and-alerts",
+                  "de/operate/runs",
+                  "de/operate/runners",
+                  "de/operate/settings",
+                  "de/operate/copilot"
+                ]
+              },
+              {
+                "group": "Self-Host",
+                "pages": [
+                  "de/self-host/overview",
+                  "de/self-host/architecture",
+                  "de/self-host/local-development",
+                  "de/self-host/deployment-shape",
+                  "de/self-host/configuration",
+                  "de/self-host/rulxctl",
+                  "de/self-host/troubleshooting"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Referenz",
+            "groups": [
+              {
+                "group": "API",
+                "pages": [
+                  "de/reference/api/introduction",
+                  "de/reference/api/workspaces-and-artifacts",
+                  "de/reference/api/runs-and-jobs",
+                  "de/reference/api/runners-and-services",
+                  "de/reference/api/triggers-and-dependencies"
+                ]
+              },
+              {
+                "group": "Verträge",
+                "pages": [
+                  "de/reference/contracts/phase-1",
+                  "de/reference/contracts/runner-controller",
+                  "de/reference/contracts/worker-protocol"
+                ]
+              },
+              {
+                "group": "Referenz",
+                "pages": [
+                  "de/reference/glossary"
+                ]
+              }
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "dark": "/logo/dark.svg",
+    "href": "/"
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Monorepo",
+        "href": "https://github.com/rulx-io/rulx"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Docs repo",
+      "href": "https://github.com/rulx-io/rulx-docs"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "website": "https://github.com/rulx-io/rulx",
+      "github": "https://github.com/rulx-io/rulx-docs"
     }
   }
 }

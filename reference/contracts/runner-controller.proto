@@ -1,0 +1,399 @@
+syntax = "proto3";
+
+package rulx.proto.v1;
+
+option go_package = "github.com/rulx/rulx/packages/proto-go/schemas;schemas";
+
+import "google/protobuf/struct.proto";
+
+// ---- Runtime capabilities ----
+
+message Capability {
+  string name = 1;
+  google.protobuf.Struct attributes = 2;
+}
+
+message RunnerDescriptor {
+  string runner_id = 1;
+  string version = 2;
+  map<string, string> labels = 3;
+  repeated Capability capabilities = 4;
+  RunnerCapacity capacity = 5;
+}
+
+message RunnerCapacity {
+  uint32 max_concurrency = 1;
+}
+
+enum RunnerStatus {
+  RUNNER_STATUS_UNSPECIFIED = 0;
+  RUNNER_STATUS_IDLE = 1;
+  RUNNER_STATUS_BUSY = 2;
+  RUNNER_STATUS_DRAINING = 3;
+}
+
+message RunnerHeartbeat {
+  string runner_id = 1;
+  string at = 2; // ISO-8601 timestamp
+  RunnerStatus status = 3;
+  uint32 busy_jobs = 4;
+  string session_id = 5;
+}
+
+message RunnerUnregisterPayload {
+  string runner_id = 1;
+  string reason = 2;
+  string requested_at = 3; // ISO-8601 timestamp
+}
+
+message RunnerHello {
+  RunnerDescriptor descriptor = 1;
+  string instance_id = 2;
+}
+
+message LeaseRetryPolicy {
+  uint32 base_ms = 1;
+  uint32 max_ms = 2;
+  double multiplier = 3;
+}
+
+message ControllerEndpoints {
+  string couchdb_url = 1;
+  string clickhouse_url = 2;
+  string s3_endpoint = 3;
+  string s3_region = 4;
+  bool s3_force_path_style = 5;
+}
+
+message RunnerHelloResponse {
+  string runner_id = 1;
+  string session_id = 2;
+  uint32 heartbeat_interval_seconds = 3;
+  uint32 heartbeat_ttl_seconds = 4;
+  LeaseRetryPolicy lease_retry = 5;
+  ControllerEndpoints endpoints = 6;
+  string config_version = 7;
+}
+
+// ---- Runtime jobs ----
+
+enum JobStatus {
+  JOB_STATUS_UNSPECIFIED = 0;
+  JOB_STATUS_QUEUED = 1;
+  JOB_STATUS_RUNNING = 2;
+  JOB_STATUS_SUCCEEDED = 3;
+  JOB_STATUS_FAILED = 4;
+  JOB_STATUS_CANCELED = 5;
+}
+
+message JobSpec {
+  string kind = 1;
+  string flow_id = 2;
+  string flow_version = 3;
+  string node_id = 4;
+  google.protobuf.Struct input = 5;
+  google.protobuf.Struct params = 6;
+  string workspace_id = 7;
+  string run_id = 8;
+  string step_run_id = 9;
+  string resource_owner_id = 10;
+}
+
+// JobEnvelope is delivered at-least-once. job_id is stable across retries,
+// attempt increments per assignment, and idempotency_key lets runners dedupe.
+message JobEnvelope {
+  string job_id = 1;
+  uint32 attempt = 6;
+  string lease_id = 2;
+  string idempotency_key = 7;
+  string created_at = 3; // ISO-8601 timestamp
+  string scheduled_at = 8; // ISO-8601 timestamp
+  string started_at = 9; // ISO-8601 timestamp
+  string finished_at = 10; // ISO-8601 timestamp
+  JobStatus status = 11;
+  uint32 timeout_ms = 4;
+  JobSpec spec = 5;
+  string workspace_id = 12;
+}
+
+// ---- Runtime inputs ----
+
+enum HttpMethod {
+  HTTP_METHOD_UNSPECIFIED = 0;
+  HTTP_METHOD_GET = 1;
+  HTTP_METHOD_HEAD = 2;
+  HTTP_METHOD_POST = 3;
+  HTTP_METHOD_PUT = 4;
+  HTTP_METHOD_DELETE = 5;
+  HTTP_METHOD_CONNECT = 6;
+  HTTP_METHOD_OPTIONS = 7;
+  HTTP_METHOD_TRACE = 8;
+  HTTP_METHOD_PATCH = 9;
+}
+
+enum InputKind {
+  INPUT_KIND_UNSPECIFIED = 0;
+  INPUT_KIND_HTTP = 1;
+  INPUT_KIND_TIMER = 2;
+}
+
+message HttpInputConfig {
+  uint32 timeout_ms = 1;
+  repeated string capabilities = 2;
+  HttpMethod method = 3;
+  string path = 4;
+}
+
+message TimerInputConfig {
+  uint32 timeout_ms = 1;
+  repeated string capabilities = 2;
+  uint32 interval_ms = 3;
+}
+
+message InputSpec {
+  string input_id = 1;
+  InputKind kind = 2;
+  map<string, string> labels = 3;
+  oneof config {
+    HttpInputConfig http = 4;
+    TimerInputConfig timer = 5;
+  }
+  string workspace_id = 6;
+}
+
+// ---- Runtime events/logs ----
+
+enum LogLevel {
+  LOG_LEVEL_UNSPECIFIED = 0;
+  LOG_LEVEL_TRACE = 1;
+  LOG_LEVEL_DEBUG = 2;
+  LOG_LEVEL_INFO = 3;
+  LOG_LEVEL_WARN = 4;
+  LOG_LEVEL_ERROR = 5;
+}
+
+message RuntimeEvent {
+  string event_id = 1;
+  string runner_id = 2;
+  string job_id = 3;
+  string at = 4; // ISO-8601 timestamp
+  string type = 5;
+  google.protobuf.Struct payload = 6;
+  string workspace_id = 7;
+}
+
+message RuntimeLog {
+  string runner_id = 1;
+  string job_id = 2;
+  string at = 3; // ISO-8601 timestamp
+  LogLevel level = 4;
+  string message = 5;
+  google.protobuf.Struct fields = 6;
+  string workspace_id = 7;
+}
+
+// ---- Trigger bindings ----
+
+message TriggerBinding {
+  string trigger_binding_id = 1;
+  string workspace_id = 2;
+  bool enabled = 3;
+  string kind = 4;
+  google.protobuf.Struct matcher = 5;
+  string flow_id = 6;
+  string flow_version_id = 7;
+  string start_node_key = 8;
+  string updated_at = 9; // ISO-8601 timestamp
+  string resource_key = 10;
+}
+
+message TriggerBindingsSnapshot {
+  string runner_id = 1;
+  string workspace_id = 2;
+  string kind = 3;
+  string generated_at = 4; // ISO-8601 timestamp
+  repeated TriggerBinding bindings = 5;
+  int64 revision = 6;
+  bool full = 7;
+  repeated string removed_binding_ids = 8;
+}
+
+message TriggerBindingsRequest {
+  string runner_id = 1;
+  string workspace_id = 2;
+  string kind = 3;
+  int64 since_revision = 4;
+}
+
+// ---- Controller <-> Runner protocol ----
+
+message LeaseRequestPayload {
+  string runner_id = 1;
+  string requested_at = 2; // ISO-8601 timestamp
+  uint32 max_jobs = 3;
+  uint32 wait_timeout_ms = 4; // Optional server wait timeout for long-polling.
+}
+
+message LeaseResponsePayload {
+  string runner_id = 1;
+  string lease_id = 2;
+  string issued_at = 3; // ISO-8601 timestamp
+  string expires_at = 4; // ISO-8601 timestamp
+  repeated JobEnvelope jobs = 5;
+  uint32 retry_after_ms = 6;
+}
+
+message RunJobPayload {
+  string runner_id = 1;
+  JobEnvelope job = 2;
+}
+
+message CancelJobPayload {
+  string runner_id = 1;
+  string job_id = 2;
+  string reason = 3;
+  string requested_at = 4; // ISO-8601 timestamp
+  string workspace_id = 5;
+}
+
+message RegisterInputPayload {
+  string runner_id = 1;
+  InputSpec input = 2;
+}
+
+message UnregisterInputPayload {
+  string runner_id = 1;
+  string input_id = 2;
+}
+
+message EmitEventPayload {
+  RuntimeEvent event = 1;
+}
+
+message EmitLogPayload {
+  RuntimeLog log = 1;
+}
+
+enum ProtocolMessageType {
+  PROTOCOL_MESSAGE_TYPE_UNSPECIFIED = 0;
+  reserved 1;
+  reserved "PROTOCOL_MESSAGE_TYPE_RUNNER_REGISTER";
+  PROTOCOL_MESSAGE_TYPE_RUNNER_HEARTBEAT = 2;
+  PROTOCOL_MESSAGE_TYPE_LEASE_REQUEST = 3;
+  PROTOCOL_MESSAGE_TYPE_LEASE_RESPONSE = 4;
+  PROTOCOL_MESSAGE_TYPE_RUN_JOB = 5;
+  PROTOCOL_MESSAGE_TYPE_CANCEL_JOB = 6;
+  PROTOCOL_MESSAGE_TYPE_REGISTER_INPUT = 7;
+  PROTOCOL_MESSAGE_TYPE_UNREGISTER_INPUT = 8;
+  PROTOCOL_MESSAGE_TYPE_EMIT_EVENT = 9;
+  PROTOCOL_MESSAGE_TYPE_EMIT_LOG = 10;
+  PROTOCOL_MESSAGE_TYPE_RUNNER_UNREGISTER = 11;
+  PROTOCOL_MESSAGE_TYPE_RUNNER_HELLO = 12;
+  PROTOCOL_MESSAGE_TYPE_RUNNER_HELLO_RESPONSE = 13;
+  PROTOCOL_MESSAGE_TYPE_TRIGGER_BINDINGS_REQUEST = 14;
+  PROTOCOL_MESSAGE_TYPE_TRIGGER_BINDINGS_SNAPSHOT = 15;
+}
+
+message ProtocolMessage {
+  ProtocolMessageType type = 1;
+  reserved 2;
+  reserved "runner_register";
+  oneof payload {
+    RunnerHeartbeat runner_heartbeat = 3;
+    LeaseRequestPayload lease_request = 4;
+    LeaseResponsePayload lease_response = 5;
+    RunJobPayload run_job = 6;
+    CancelJobPayload cancel_job = 7;
+    RegisterInputPayload register_input = 8;
+    UnregisterInputPayload unregister_input = 9;
+    EmitEventPayload emit_event = 10;
+    EmitLogPayload emit_log = 11;
+    RunnerUnregisterPayload runner_unregister = 12;
+    RunnerHello runner_hello = 13;
+    RunnerHelloResponse runner_hello_response = 14;
+    TriggerBindingsRequest trigger_bindings_request = 15;
+    TriggerBindingsSnapshot trigger_bindings_snapshot = 16;
+  }
+}
+
+// ---- Runner <-> Worker protocol ----
+
+// Worker protocol v1 is a framed protobuf stream. Stdout must be reserved for
+// protocol frames; any other output is undefined behavior.
+
+message WorkerHelloRequest {
+  uint32 protocol_version = 1;
+  string runner_id = 2;
+  string runner_session_id = 3;
+}
+
+message WorkerHelloResponse {
+  uint32 protocol_version = 1;
+  string worker_kind = 2;
+  string worker_version = 3;
+  repeated string supported_job_kinds = 4;
+}
+
+message WorkerRunRequest {
+  JobEnvelope job = 1;
+}
+
+message WorkerCancelRequest {
+  string job_id = 1;
+  string reason = 2;
+}
+
+message WorkerShutdownRequest {
+  bool drain = 1;
+}
+
+enum WorkerLogStream {
+  WORKER_LOG_STREAM_UNSPECIFIED = 0;
+  WORKER_LOG_STREAM_STDOUT = 1;
+  WORKER_LOG_STREAM_STDERR = 2;
+}
+
+message WorkerLog {
+  string job_id = 1;
+  WorkerLogStream stream = 2;
+  string line = 3;
+  string at = 4; // ISO-8601 timestamp
+  uint64 seq = 5;
+  string node_id = 6;
+}
+
+enum WorkerResultStatus {
+  WORKER_RESULT_STATUS_UNSPECIFIED = 0;
+  WORKER_RESULT_STATUS_SUCCEEDED = 1;
+  WORKER_RESULT_STATUS_FAILED = 2;
+  WORKER_RESULT_STATUS_CANCELED = 3;
+}
+
+message WorkerResult {
+  string job_id = 1;
+  WorkerResultStatus status = 2;
+  google.protobuf.Struct output = 3;
+  string error_message = 4;
+}
+
+message WorkerFatalError {
+  string message = 1;
+}
+
+message WorkerRequest {
+  oneof payload {
+    WorkerHelloRequest hello = 1;
+    WorkerRunRequest run = 2;
+    WorkerCancelRequest cancel = 3;
+    WorkerShutdownRequest shutdown = 4;
+  }
+}
+
+message WorkerResponse {
+  oneof payload {
+    WorkerHelloResponse hello = 1;
+    WorkerLog log = 2;
+    WorkerResult result = 3;
+    WorkerFatalError fatal_error = 4;
+  }
+}

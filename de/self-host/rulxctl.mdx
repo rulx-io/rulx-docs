@@ -1,0 +1,28 @@
+---
+title: 'rulxctl'
+description: 'Die controller-zentrierte CLI für Operatoren, Entwickler und CI'
+---
+
+> Hinweis zu Pre-Alpha: `rulxctl` ist bereits nützlich, aber Distribution und Packaging sind noch nicht eingefroren.
+
+`rulxctl` ist die Command-Line-Interface zum Betreiben und Testen eines Rulx-Deployments.
+
+## Designregel
+
+`rulxctl` spricht nur mit der Controller-HTTP-API.
+
+Es spricht nicht:
+
+- direkt mit Runnern
+- direkt mit NATS
+- es führt Flows nicht selbst aus
+
+## Beispielbefehle
+
+```bash
+rulxctl workspace ls
+rulxctl runners ls
+rulxctl --workspace ws_1234 flow ls
+rulxctl --workspace ws_1234 job ls --status running
+rulxctl --workspace ws_1234 job watch <job_id>
+```

@@ -1,0 +1,23 @@
+---
+title: 'Deployment-Architektur'
+description: 'Controller, Gateway, Runner, Worker und NATS im aktuellen Self-Host-Modell'
+---
+
+> Hinweis zu Pre-Alpha: Diese Seite beschreibt die aktuelle wahrscheinliche Richtung, keinen eingefrorenen öffentlichen Vertrag.
+
+## Rollen
+
+Die aktuell wahrscheinliche v1-Form hält diese Rollen getrennt:
+
+- Controller
+- Gateway
+- Runner
+- Worker
+
+## Konnektivität
+
+Die wichtigste Beziehung ist:
+
+- Gateway und Runner brauchen keine direkte Verbindung zueinander
+- das Gateway kommuniziert über das Runtime-/Control-Plane-Geflecht
+- der Runner spricht mit Controller-HTTP und NATS

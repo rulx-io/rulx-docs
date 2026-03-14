@@ -1,0 +1,17 @@
+---
+title: 'Runner- und Services-API'
+description: 'Endpunkte für Ausführungsflotte und Runtime-Gesundheit des Controllers'
+---
+
+Diese Gruppe deckt infrastrukturseitige Runtime-APIs ab.
+
+## Runner-Endpunkte
+
+- `GET /v1/runners`
+- `GET /v1/runners/{runnerId}`
+- `POST /v1/runners/{runnerId}/drain`
+- `POST /v1/runners/{runnerId}/undrain`
+
+## Service-Endpunkt
+
+- `GET /v1/services`

@@ -1,0 +1,49 @@
+---
+title: 'Workspaces'
+description: 'The primary isolation boundary in Rulx'
+---
+
+Workspaces are the top-level scope for most day-to-day Rulx activity.
+
+They define the boundary for:
+
+- URLs and navigation
+- artifact libraries
+- runs and alerts
+- workspace settings and access
+- package registries and other workspace-scoped runtime inputs
+
+## Why they matter
+
+The web app routes are explicitly workspace-scoped:
+
+- `/w/:workspaceSlug/overview`
+- `/w/:workspaceSlug/runs`
+- `/w/:workspaceSlug/build/...`
+- `/w/:workspaceSlug/settings`
+
+This is not just a UI convention. The controller API also uses workspace identifiers for the major operational surfaces.
+
+## What lives inside a workspace
+
+A workspace owns the artifact library used to build and run:
+
+- flows
+- schemas
+- code modules
+
+It also scopes the operational surfaces used to inspect and control runtime activity:
+
+- jobs and runs
+- logs and timeline
+- trigger bindings
+- node inputs and catalog views
+
+## Names and slugs
+
+When you create a workspace, you choose:
+
+- a display name for people
+- an optional slug for stable, readable URLs
+
+The UI treats the slug as the stable workspace route key. The setup flow encourages lowercase slugs with letters, numbers, and dashes.

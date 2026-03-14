@@ -1,0 +1,24 @@
+---
+title: 'Controller, gateway, runner, worker'
+description: 'The short mental model for Rulx runtime roles'
+---
+
+Rulx is easier to reason about if you keep the runtime roles separate.
+
+## Controller
+
+The controller is the central API and orchestration surface.
+
+## Gateway
+
+The gateway is the ingress role for HTTP-triggered traffic.
+
+## Runner
+
+The runner is the execution role for leased work.
+
+## Worker
+
+Workers are the executable units managed by a runner.
+
+The current worker protocol is a strict framed protobuf stream on stdin and stdout, with handshake, run, cancel, shutdown, and log/result messages.

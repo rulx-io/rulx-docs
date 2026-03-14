@@ -1,0 +1,32 @@
+---
+title: 'Troubleshooting'
+description: 'Häufige Pre-Alpha-Probleme in lokaler Entwicklung und Betrieb'
+---
+
+> Hinweis zu Pre-Alpha: Diese Hinweise werden präziser, sobald Packaging und Deployment-Verträge stabiler sind.
+
+## Controller nicht erreichbar
+
+Wenn der Controller nicht erreichbar ist:
+
+- werden UI-Aktionen, die Zustand ändern, read-only oder deaktiviert
+- können Überblicks- und Alert-Oberflächen gecachte oder veraltete Daten zeigen
+- können Runner- und Job-Aktivitäten trotzdem weiterlaufen
+
+## Runner-Wartung
+
+Wenn ein Runner ungesund ist oder isoliert werden muss:
+
+1. Runner inspizieren
+2. drainen
+3. laufende Arbeit auslaufen lassen
+4. nach der Wartung wieder freigeben
+
+## Gateway- und Trigger-Probleme
+
+Wenn HTTP-getriggerte Flows nicht wie erwartet starten:
+
+- prüfen, ob das Gateway läuft
+- prüfen, ob das Workspace-Binding korrekt ist
+- prüfen, ob der Flow ein gültiges Callable Interface und Trigger-Binding hat
+- Run-Historie und Logs nach dem Request inspizieren

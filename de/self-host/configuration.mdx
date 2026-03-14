@@ -1,0 +1,30 @@
+---
+title: 'Konfiguration und Umgebung'
+description: 'Erkennbare Runtime-Konfiguration für aktuelle lokale und operatorische Flows'
+---
+
+> Hinweis zu Pre-Alpha: Namen von Umgebungsvariablen und Packaging-Details können sich noch ändern.
+
+Diese Seite dokumentiert die Konfiguration, die bereits aus dem Repo und dem lokalen Entwicklungsflow erkennbar ist.
+
+## Zentrale lokale Variablen
+
+```bash
+RULX_NATS_URL=nats://localhost:4222
+RULX_CONTROLLER_URL=http://localhost:3000
+VITE_CONTROLLER_URL=http://localhost:3000
+```
+
+## Runner-bezogen
+
+```bash
+RULX_WORKER_KIND=node
+RULX_WORKER_ENTRY=../worker/node/dist/entry.js
+RULX_NODE_DEPS_ROOT=/tmp/rulx/node-deps
+```
+
+## Optionales Workspace-Binding
+
+```bash
+RULX_WORKSPACE_ID=ws_integration
+```

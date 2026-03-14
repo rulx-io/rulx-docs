@@ -1,0 +1,39 @@
+---
+title: 'Runs, Timeline und Logs'
+description: 'Wie Ausführungszustand in Rulx dargestellt und debuggt wird'
+---
+
+Rulx trennt autoritativen Run-Zustand von verrauschtem Runtime-Output.
+
+## Timeline
+
+Die Timeline ist die autoritative Folge von Zustandsübergängen, die vom Controller gespeichert wird.
+
+Nutze sie für Fragen wie:
+
+- Hat der Job gestartet?
+- Welcher Runner hat den Lease bekommen?
+- Ist er erfolgreich beendet, fehlgeschlagen oder abgebrochen worden?
+
+Die aktuell eingefrorene Phase-1-Job-State-Machine ist:
+
+`queued -> running -> succeeded/failed/canceled`
+
+## Logs
+
+Logs sind für Debugging nützlich, aber nicht die Quelle der Wahrheit für Job-Korrektheit.
+
+Nutze Logs für Fragen wie:
+
+- Was hat der Worker während des Runs ausgegeben?
+- Welche Node hat eine bestimmte Zeile erzeugt?
+- Gab es ein Dependency- oder Umgebungsproblem?
+
+## Runs in der UI
+
+Die Web-App gibt dir mehrere Wege, Ausführung zu inspizieren:
+
+- workspace-weite Run-Listen
+- flow-spezifische Run-Historie
+- an einen Run angehängte Artefakte
+- Log- und Detail-Panels

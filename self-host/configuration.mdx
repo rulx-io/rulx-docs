@@ -1,0 +1,30 @@
+---
+title: 'Configuration and environment'
+description: 'Discoverable runtime configuration used by the current local and operator flows'
+---
+
+> Pre-alpha note: environment variable names and packaging details may still change.
+
+This page documents the configuration that is already discoverable from the repo and local development flow.
+
+## Core local variables
+
+```bash
+RULX_NATS_URL=nats://localhost:4222
+RULX_CONTROLLER_URL=http://localhost:3000
+VITE_CONTROLLER_URL=http://localhost:3000
+```
+
+## Runner-related
+
+```bash
+RULX_WORKER_KIND=node
+RULX_WORKER_ENTRY=../worker/node/dist/entry.js
+RULX_NODE_DEPS_ROOT=/tmp/rulx/node-deps
+```
+
+## Optional workspace binding
+
+```bash
+RULX_WORKSPACE_ID=ws_integration
+```

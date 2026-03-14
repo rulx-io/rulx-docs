@@ -1,0 +1,17 @@
+---
+title: 'Self-host overview'
+description: 'Operator-facing overview of the current self-host direction'
+---
+
+> Pre-alpha note: the self-host shape is intentionally not frozen yet. Packaging, auth, topology details, upgrade behavior, and distribution details may still change before alpha.
+
+Rulx already has a coherent self-host direction, but it is still pre-release.
+
+## Current bias
+
+The current direction favors:
+
+- a simple default install path for small teams
+- separate gateway and runner roles
+- controller-centric operational tooling
+- a bundled worker inside the runner for the default self-host execution artifact

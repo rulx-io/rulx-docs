@@ -1,0 +1,21 @@
+---
+title: 'Phase 1 contracts'
+description: 'The frozen v1 contract snapshot and its stable invariants'
+---
+
+This section summarizes the frozen Phase 1 contract set captured in the monorepo.
+
+## Artifacts
+
+- OpenAPI snapshot: [openapi.json](/reference/api/openapi.json)
+- Proto snapshot: [runner-controller.proto](/reference/contracts/runner-controller.proto)
+
+## Stable invariants
+
+The current contract snapshot calls out these stable ideas:
+
+- job deliveries are at-least-once
+- `idempotency_key` is stable
+- the job state machine is fixed to `queued -> running -> succeeded/failed/canceled`
+- controller leases include `issued_at` and `expires_at`
+- expired leases may be reassigned

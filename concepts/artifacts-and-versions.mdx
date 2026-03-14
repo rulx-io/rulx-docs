@@ -1,0 +1,35 @@
+---
+title: 'Artifacts and versions'
+description: 'How flows, schemas, and code modules are modeled in Rulx'
+---
+
+Rulx treats build assets as artifacts that move through draft and published states.
+
+The main artifact types exposed today are:
+
+- flows
+- schemas
+- code modules
+
+## Common lifecycle
+
+Across artifact types, the model is broadly:
+
+1. Create an artifact record.
+2. Work in a draft or editable surface.
+3. Compare or validate changes where relevant.
+4. Publish a version for execution or reuse.
+
+The controller exposes artifact draft, version, merge, source, and publish operations in the public API.
+
+## Flows
+
+Flows are the orchestration layer. They define how work moves between nodes and what entrypoints can invoke the flow.
+
+## Schemas
+
+Schemas stabilize the shape of payloads used across services and flows.
+
+## Code modules
+
+Code modules are custom nodes managed in the workspace library. They can contribute reusable logic to flows and may require dependency installation and workspace package registry access.

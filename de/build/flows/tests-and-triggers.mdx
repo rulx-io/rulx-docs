@@ -1,0 +1,24 @@
+---
+title: 'Flow-Tests und Trigger-Bindings'
+description: 'Wie Flows getestet und für HTTP-getriggerten Traffic freigegeben werden'
+---
+
+Flow-Tests und Trigger-Bindings bilden die Brücke zwischen Authoring und echter Ausführung.
+
+## Test-Oberflächen
+
+Die Flow-Test-Seiten helfen dir, Verhalten vor oder parallel zur Veröffentlichung zu validieren.
+
+## Trigger-Bindings
+
+Trigger-Bindings verbinden Runtime-Ingress mit einem Flow.
+
+Die aktuelle Controller-API enthält workspace-spezifische Trigger-Binding-Endpunkte, und die UI zeigt Trigger-Informationen direkt in den Flow-Build-Surfaces.
+
+## HTTP-getriggerte Flows
+
+Das Gateway ist die Ingress-Rolle für HTTP-getriggerten Traffic. Das Callable Interface eines Flows und seine Trigger-Bindings bestimmen gemeinsam:
+
+- welche Routen existieren
+- welchen Entrypoint sie aufrufen
+- welche Payload-Form der Flow erwartet

@@ -1,0 +1,52 @@
+---
+title: "Rulx-Dokumentation"
+description: "Builder-orientierte Guides und Operator-Referenz für Rulx"
+---
+
+Rulx ist eine workspace-spezifische Control Plane zum Bauen von Flows, Versionieren von Schemas und Code-Modulen, Ausführen von Jobs und Betreiben der Runtime, die diese Workloads ausführt.
+
+Nutze diese Seite in derselben Reihenfolge, in der die meisten Teams das Produkt kennenlernen:
+
+1. Verstehe das Modell.
+2. Erstelle ein Workspace und baue Artefakte.
+3. Führe Flows aus und debugge sie.
+4. Betreibe Runner und Deployments.
+5. Wechsle in die API- und Protokollreferenz, wenn du exakte Verträge brauchst.
+
+## Hier starten
+
+- [Quickstart](/de/quickstart)
+  Starte den lokalen Stack, lege ein Workspace an und komme bis zum ersten Flow-Run.
+- [Workspaces](/de/concepts/workspaces)
+  Verstehe die Isolationsgrenze, die URLs, Artefakte, Runs und Zugriff scoped.
+- [Runtime-Rollen](/de/concepts/runtime-roles)
+  Lerne das kurze Mental Model für Controller, Gateway, Runner und Worker.
+
+## Mit Rulx bauen
+
+- [Build-Überblick](/de/build/overview)
+  Sieh, wie Flows, Schemas und Code-Module zusammenpassen.
+- [Flows](/de/build/flows)
+  Durchsuche Registries, bearbeite Versionen, hänge Trigger an und inspiziere die Run-Historie.
+- [Schemas](/de/build/schemas)
+  Versioniere Payload-Verträge für stabile Ein- und Ausgaben über Flows und Module hinweg.
+- [Code-Module](/de/build/code-modules)
+  Verwalte Custom Nodes, generierten Source-Code und Dependency-Installationen.
+
+## Betreiben und deployen
+
+- [Überblick und Alerts](/de/operate/overview-and-alerts)
+  Beobachte Workspace-Gesundheit, aktuelle Fehler und Performance-Signale.
+- [Runs und Artefakte](/de/operate/runs)
+  Inspiziere Run-Status, Timeline, Logs, Artefakte und Abbrüche.
+- [Self-Host-Überblick](/de/self-host/overview)
+  Operator-orientierte Deployment-Hinweise für die aktuelle Pre-Alpha-Form.
+
+## Exakte Verträge
+
+- [Controller-API](/de/reference/api/introduction)
+  Die aktuelle Controller-Oberfläche, nach Produktbereichen gruppiert.
+- [Phase-1-Verträge](/de/reference/contracts/phase-1)
+  Eingefrorener v1-Vertragssnapshot und Invarianten.
+- [Worker-Protokoll v1](/de/reference/contracts/worker-protocol)
+  Das framed Protobuf-Protokoll zwischen Runner und Worker.

@@ -1,0 +1,24 @@
+---
+title: 'Worker protocol v1'
+description: 'The framed protobuf protocol used between runner and worker'
+---
+
+Rulx workers run as separate processes or containers managed by a runner.
+
+The runner and worker communicate over a framed protobuf stream on stdin and stdout.
+
+## Transport
+
+- stdin: runner to worker
+- stdout: worker to runner protocol frames only
+- stderr: debugging only, never parsed as protocol
+
+## Handshake
+
+Before any real work starts:
+
+1. runner spawns worker
+2. runner sends `WorkerHelloRequest`
+3. worker responds with `WorkerHelloResponse`
+
+The worker must not process other messages before the handshake completes.

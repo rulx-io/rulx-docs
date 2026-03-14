@@ -1,0 +1,23 @@
+---
+title: 'Infrastructure and runners'
+description: 'Runner inventory, runtime health, and execution controls'
+---
+
+The infrastructure surfaces focus on the execution fleet rather than on a single workspace artifact.
+
+## Runners
+
+Runners are the execution role for leased work.
+
+The controller exposes public runner registry endpoints and the UI gives you a runner-focused operational view.
+
+Common tasks:
+
+- list runners
+- inspect a runner
+- drain a runner
+- undrain a runner
+
+## Services and runtime health
+
+The controller also exposes service-level runtime endpoints used by the operator-facing surfaces.

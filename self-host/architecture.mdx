@@ -1,0 +1,23 @@
+---
+title: 'Deployment architecture'
+description: 'Controller, gateway, runner, worker, and NATS in the current self-host model'
+---
+
+> Pre-alpha note: this page describes the current likely direction, not a frozen public contract.
+
+## Roles
+
+The current likely v1 shape keeps these roles separate:
+
+- controller
+- gateway
+- runner
+- worker
+
+## Connectivity
+
+The important relationship to remember is:
+
+- gateway and runner do not require direct connectivity to each other
+- gateway communicates through the runtime/control-plane fabric
+- runner communicates with controller HTTP and NATS

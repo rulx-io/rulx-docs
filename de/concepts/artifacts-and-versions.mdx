@@ -1,0 +1,35 @@
+---
+title: 'Artefakte und Versionen'
+description: 'Wie Flows, Schemas und Code-Module in Rulx modelliert sind'
+---
+
+Rulx behandelt Build-Assets als Artefakte, die Draft- und Published-Zustände durchlaufen.
+
+Die heute sichtbaren Haupttypen sind:
+
+- Flows
+- Schemas
+- Code-Module
+
+## Gemeinsamer Lifecycle
+
+Über Artefakttypen hinweg ist das Modell grob:
+
+1. Einen Artefaktdatensatz anlegen.
+2. In einem Draft oder editierbaren Surface arbeiten.
+3. Änderungen bei Bedarf vergleichen oder validieren.
+4. Eine Version zur Ausführung oder Wiederverwendung veröffentlichen.
+
+Die Controller-API stellt dafür Draft-, Versions-, Merge-, Source- und Publish-Operationen bereit.
+
+## Flows
+
+Flows sind die Orchestrierungsschicht. Sie definieren, wie Arbeit zwischen Nodes fließt und welche Entrypoints einen Flow aufrufen können.
+
+## Schemas
+
+Schemas stabilisieren die Form von Payloads, die über Services und Flows hinweg verwendet werden.
+
+## Code-Module
+
+Code-Module sind Custom Nodes in der Workspace-Bibliothek. Sie können wiederverwendbare Logik zu Flows beitragen und Dependency-Installationen sowie Zugriff auf Workspace-Package-Registries benötigen.

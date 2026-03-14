@@ -1,0 +1,105 @@
+---
+title: "Quickstart"
+description: "Starte den lokalen Rulx-Stack und komme bis zum ersten Workspace und Flow-Run"
+---
+
+## Voraussetzungen
+
+- Node `20.19.0`
+- `pnpm` `10.27.0`
+- Go `1.22`
+- Docker Compose
+
+Die Monorepo-Wurzel ist die Quelle der Wahrheit für Toolchain und Standardbefehle.
+
+## 1. Abhängigkeiten installieren
+
+Vom Monorepo-Root aus:
+
+```bash
+pnpm install
+```
+
+Wenn du die gepinnte `pnpm`-Version global brauchst:
+
+```bash
+npm install -g pnpm@10.27.0
+```
+
+## 2. Lokale Konfiguration vorbereiten
+
+Kopiere die Beispiel-Umgebungsdatei und passe Werte bei Bedarf an:
+
+```bash
+cp .env.example .env.local
+```
+
+Der lokale Stack verwendet standardmäßig:
+
+- Controller auf `http://localhost:3000`
+- Gateway auf `http://localhost:4000`
+- Workspace-Binding `ws_integration` für HTTP-Trigger-Tests
+
+## 3. Den lokalen Haupt-Stack starten
+
+```bash
+pnpm dev
+```
+
+Damit starten:
+
+- Controller
+- Web
+- Node-Worker
+- Runner
+- Gateway
+
+## 4. Ein Workspace erstellen
+
+Öffne die Web-App und erstelle ein Workspace unter `/setup/workspace`, falls der Controller noch keines hat.
+
+Workspaces sind die primäre Isolationsgrenze. Sie scopen:
+
+- URLs
+- Flows
+- Schemas
+- Code-Module
+- Runs
+- Einstellungen und Zugriff
+
+Mehr dazu unter [Workspaces](/de/concepts/workspaces).
+
+## 5. Das erste Artefakt bauen
+
+Innerhalb eines Workspace öffnest du **Build** und startest mit einem dieser Bereiche:
+
+- ein neuer Flow in `/build/flows`
+- ein neues Schema in `/build/schemas`
+- ein neues Code-Modul in `/build/nodes`
+
+Für den typischen ersten Durchlauf erstellst du einen Flow und nutzt Editor plus Config-Ansichten, um ein Callable Interface zu definieren und eine Version zu veröffentlichen.
+
+Mehr dazu unter [Flows](/de/build/flows).
+
+## 6. Ausführen und inspizieren
+
+Nutze die Run-Oberflächen des Workspace, um Folgendes zu prüfen:
+
+- aktuelle und letzte Runs
+- Zustandsübergänge
+- Logs
+- von einem Run erzeugte Artefakte
+
+Das Run-Modell wird unter [Runs, Timeline und Logs](/de/concepts/runs-and-logs) erklärt.
+
+## Optional: `rulxctl` nutzen
+
+`rulxctl` ist die Controller-zentrierte CLI für Entwickler, Operatoren und CI:
+
+```bash
+rulxctl workspace ls
+rulxctl --workspace ws_1234 flow ls
+rulxctl --workspace ws_1234 job ls
+```
+
+Siehe [rulxctl](/de/self-host/rulxctl).

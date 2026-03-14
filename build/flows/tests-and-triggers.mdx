@@ -1,0 +1,24 @@
+---
+title: 'Flow tests and trigger bindings'
+description: 'How flows are exercised and exposed to HTTP-triggered traffic'
+---
+
+Flow tests and trigger bindings are the bridge between authoring and real execution.
+
+## Test surfaces
+
+The flow test pages let you validate behavior before or alongside publication.
+
+## Trigger bindings
+
+Trigger bindings connect runtime ingress to a flow.
+
+The current controller API includes workspace-scoped trigger binding endpoints, and the UI exposes trigger information directly from the flow build surfaces.
+
+## HTTP-triggered flows
+
+The gateway is the ingress role for HTTP-triggered traffic. A flow’s callable interface and trigger bindings together determine:
+
+- which routes exist
+- which entrypoint they call
+- what payload shape the flow expects

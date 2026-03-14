@@ -1,0 +1,40 @@
+---
+title: 'Glossary'
+description: 'Common Rulx terms used across product and operator docs'
+---
+
+## Workspace
+
+The main isolation boundary for URLs, artifacts, runs, and settings.
+
+## Artifact
+
+A build asset managed by Rulx. Today the main artifact families are flows, schemas, and code modules.
+
+## Draft
+
+The editable working state of an artifact before promotion to a published version.
+
+## Version
+
+A published artifact state intended for stable reuse or runtime execution.
+
+## Run
+
+The execution-facing view of work associated with a flow or workspace activity.
+
+## Job
+
+The controller-side execution unit tracked through state transitions, timeline, and logs.
+
+## Runner
+
+The execution role that leases work, manages workers, and communicates with the controller and NATS.
+
+## Worker
+
+The process or container managed by a runner that executes work via the framed protobuf worker protocol.
+
+## Trigger binding
+
+The workspace-scoped runtime wiring that connects ingress, such as HTTP-triggered routes, to a callable flow entrypoint.

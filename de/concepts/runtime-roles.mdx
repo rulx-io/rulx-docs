@@ -1,0 +1,24 @@
+---
+title: 'Controller, Gateway, Runner, Worker'
+description: 'Das kurze Mental Model für Runtime-Rollen in Rulx'
+---
+
+Rulx ist leichter zu verstehen, wenn du die Runtime-Rollen sauber trennst.
+
+## Controller
+
+Der Controller ist die zentrale API- und Orchestrierungsoberfläche.
+
+## Gateway
+
+Das Gateway ist die Ingress-Rolle für HTTP-getriggerten Traffic.
+
+## Runner
+
+Der Runner ist die Ausführungsrolle für geleaste Arbeit.
+
+## Worker
+
+Worker sind die ausführbaren Einheiten, die von einem Runner verwaltet werden.
+
+Das aktuelle Worker-Protokoll ist ein strikter framed Protobuf-Stream über stdin und stdout mit Handshake, Run, Cancel, Shutdown sowie Log- und Result-Nachrichten.

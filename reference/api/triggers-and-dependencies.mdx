@@ -1,0 +1,22 @@
+---
+title: 'Trigger bindings, inputs, node catalog, and dependencies API'
+description: 'Workspace-scoped runtime wiring and dependency-management endpoints'
+---
+
+This group covers the supporting APIs that connect runtime ingress, node capabilities, and dependency workflows.
+
+## Trigger bindings
+
+- `GET /v1/w/{workspaceId}/trigger-bindings`
+- `GET /v1/w/{workspaceId}/trigger-bindings/{triggerBindingId}`
+
+## Inputs and node catalog
+
+- `GET /v1/w/{workspaceId}/inputs`
+- `GET /v1/w/{workspaceId}/node-catalog`
+
+## Node dependency workflows
+
+- `POST /v1/w/{workspaceId}/node-dependencies/bulk-bump`
+- `POST /v1/artifact_drafts/{artifactDraftId}/node-dependencies/install`
+- `POST /v1/artifact_versions/{artifactVersionId}/node-dependencies/install`

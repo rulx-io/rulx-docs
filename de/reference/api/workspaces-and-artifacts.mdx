@@ -1,0 +1,26 @@
+---
+title: 'Workspaces- und Artefakte-API'
+description: 'Workspace-Verwaltung plus Endpunkte für Artefakt-Drafts, -Versionen und Publish'
+---
+
+Diese Gruppe deckt Workspace-Identität und das Modell der Artefaktbibliothek ab.
+
+## Workspace-Endpunkte
+
+- `GET /v1/workspaces`
+- `POST /v1/workspaces`
+- `GET /v1/workspaces/{workspaceId}`
+- `DELETE /v1/workspaces/{workspaceId}`
+
+## Workspace-Artefaktbibliothek
+
+- `GET /v1/w/{workspaceId}/artifacts`
+
+## Artefakt-Lifecycle-Endpunkte
+
+- `GET /v1/artifacts/{artifactId}`
+- `GET /v1/artifacts/{artifactId}/draft`
+- `GET /v1/artifacts/{artifactId}/drafts`
+- `POST /v1/artifacts/{artifactId}/drafts/{artifactDraftId}/merge`
+- `POST /v1/artifacts/{artifactId}/publish`
+- `GET /v1/artifacts/{artifactId}/versions`

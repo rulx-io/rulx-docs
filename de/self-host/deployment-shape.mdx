@@ -1,0 +1,23 @@
+---
+title: 'Wahrscheinliche Deployment-Form'
+description: 'Der aktuelle Pre-Alpha-Fokus für Packaging und Topologie'
+---
+
+> Hinweis zu Pre-Alpha: Dies beschreibt eine wahrscheinliche Alpha-Richtung, keinen ausgelieferten Deployment-Vertrag.
+
+## Standard-Fokus
+
+Die aktuelle Self-Host-Richtung bevorzugt ein einfaches Preset für kleine Teams.
+
+Das bedeutet:
+
+- Gateway und Runner können aus operativen Gründen auf demselben Host laufen
+- Co-Location ändert nicht das Runtime-Abhängigkeitsmodell
+- der Controller bleibt die zentrale API- und Orchestrierungsoberfläche
+
+## Aktuell wahrscheinliche Entscheidungen
+
+- `gateway` bleibt die Ingress-Rolle
+- `runner` bleibt die Ausführungsrolle
+- das Standard-Artefakt für Self-Host-Ausführung bündelt den Worker im `runner`
+- `rulxctl` wird als externes Operator-Tool behandelt, nicht als langlebiger Service

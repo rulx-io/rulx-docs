@@ -1,0 +1,25 @@
+---
+title: 'Lokaler Entwicklungs-Stack'
+description: 'Wie du den aktuellen lokalen Rulx-Stack aus dem Monorepo startest'
+---
+
+> Hinweis zu Pre-Alpha: Lokale Entwicklung ist heute der am besten unterstützte Deployment-Pfad.
+
+## Hauptbefehl
+
+Vom Monorepo-Root aus:
+
+```bash
+cp .env.example .env.local
+pnpm dev
+```
+
+## Was startet
+
+Der lokale Stack startet:
+
+- Controller
+- Web
+- Node-Worker
+- Runner
+- Gateway

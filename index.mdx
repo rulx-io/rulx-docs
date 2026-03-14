@@ -1,56 +1,60 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "Rulx docs"
+description: "Builder-first guides and operator reference for Rulx"
 ---
 
-## Setting up
+Rulx is a workspace-scoped control plane for building flows, versioning schemas and code modules, running jobs, and operating the runtime that executes them.
 
 Get your ocumentation site up and running in minutes.
 
 <Card icon="rocket" horizontal href="/quickstart" title="Start here">
   Follow our three step quickstart guide.
 </Card>
+=======
+Use this site in the same order most teams learn the product:
 
-## Make it yours
+1. Understand the model.
+2. Create a workspace and build artifacts.
+3. Run and debug flows.
+4. Operate runners and deployments.
+5. Drop into API and protocol reference when you need exact contracts.
+>>>>>>> a7a6bcc (add all)
 
-Design a docs site that looks great and empowers your users.
+## Start here
 
-<Columns cols={2}>
-  <Card icon="pen-to-square" href="/development" title="Edit locally">
-    Edit your docs locally and preview them in real time.
-  </Card>
-  <Card icon="palette" href="/essentials/settings" title="Customize your site">
-    Customize the design and colors of your site to match your brand.
-  </Card>
-  <Card icon="map" href="/essentials/navigation" title="Set up navigation">
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card icon="terminal" href="/api-reference/introduction" title="API documentation">
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
+- [Quickstart](/quickstart)
+  Launch the local stack, create a workspace, and get to the first flow run.
+- [Workspaces](/concepts/workspaces)
+  Learn the isolation boundary that scopes URLs, artifacts, runs, and access.
+- [Runtime roles](/concepts/runtime-roles)
+  Get the short mental model for controller, gateway, runner, and worker.
 
-## Create beautiful pages
+## Build with Rulx
 
-Everything you need to create world-class documentation.
+- [Build overview](/build/overview)
+  See how flows, schemas, and code modules fit together.
+- [Flows](/build/flows)
+  Browse registries, edit versions, attach triggers, and inspect flow run history.
+- [Schemas](/build/schemas)
+  Version payload contracts for stable inputs and outputs across flows and modules.
+- [Code modules](/build/code-modules)
+  Manage custom nodes, generated source, and dependency installs.
 
-<Columns cols={2}>
-  <Card icon="pen-fancy" href="/essentials/markdown" title="Write with MDX">
-    Use MDX to style your docs pages.
-  </Card>
-  <Card icon="code" href="/essentials/code" title="Code samples">
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card icon="image" href="/essentials/images" title="Images">
-    Display images and other media.
-  </Card>
-  <Card icon="recycle" href="/essentials/reusable-snippets" title="Reusable snippets">
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
+## Operate and deploy
 
-## Need inspiration?
+- [Overview and alerts](/operate/overview-and-alerts)
+  Watch workspace health, recent failures, and performance signals.
+- [Runs and artifacts](/operate/runs)
+  Inspect run state, timeline, logs, artifacts, and cancellation.
+- [Self-host overview](/self-host/overview)
+  Operator-facing deployment guidance for the current pre-alpha shape.
+>>>>>>> a7a6bcc (add all)
 
-<Card icon="stars" href="https://mintlify.com/customers" title="See complete examples">
-  Browse our showcase of exceptional documentation sites.
-</Card>
+## Exact contracts
+
+- [Controller API](/reference/api/introduction)
+  The current controller surface, grouped by product area.
+- [Phase 1 contracts](/reference/contracts/phase-1)
+  Frozen v1 contract snapshot and invariants.
+- [Worker protocol v1](/reference/contracts/worker-protocol)
+  The framed protobuf protocol used between runner and worker.

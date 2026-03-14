@@ -1,0 +1,19 @@
+---
+title: 'Runs, jobs, logs, and timeline API'
+description: 'Execution-facing endpoints for workspace job lifecycle and debugging'
+---
+
+This group covers the execution history and debugging side of the controller.
+
+## Job endpoints
+
+- `GET /v1/w/{workspaceId}/jobs`
+- `POST /v1/w/{workspaceId}/jobs`
+- `GET /v1/w/{workspaceId}/jobs/{jobId}`
+- `POST /v1/w/{workspaceId}/jobs/{jobId}/cancel`
+
+## Debugging endpoints
+
+- `GET /v1/w/{workspaceId}/jobs/{jobId}/logs`
+- `GET /v1/w/{workspaceId}/jobs/{jobId}/logs/stream`
+- `GET /v1/w/{workspaceId}/jobs/{jobId}/timeline`

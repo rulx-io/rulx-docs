@@ -1,0 +1,23 @@
+---
+title: 'Likely deployment shape'
+description: 'The current pre-alpha packaging and topology bias'
+---
+
+> Pre-alpha note: this describes a likely alpha direction, not a released deployment contract.
+
+## Default bias
+
+The current self-host direction favors a simple preset for small teams.
+
+That means:
+
+- gateway and runner can be co-located for operational convenience
+- co-location does not change the runtime dependency model
+- controller remains the central API and orchestration surface
+
+## Current likely choices
+
+- `gateway` remains the ingress role
+- `runner` remains the execution role
+- the default self-host execution artifact bundles the worker inside `runner`
+- `rulxctl` is treated as an external operator tool, not a long-running service

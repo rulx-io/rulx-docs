@@ -1,0 +1,25 @@
+---
+title: 'Local development stack'
+description: 'How to run the current local Rulx stack from the monorepo'
+---
+
+> Pre-alpha note: local development remains the best-supported deployment path today.
+
+## Main command
+
+From the monorepo root:
+
+```bash
+cp .env.example .env.local
+pnpm dev
+```
+
+## What starts
+
+The local stack starts:
+
+- controller
+- web
+- node worker
+- runner
+- gateway
