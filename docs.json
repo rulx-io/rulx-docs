@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Rulx Docs",
+  "name": "Rulx",
   "colors": {
     "primary": "#0094D3",
     "light": "#7FCFF2",
