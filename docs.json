@@ -7,7 +7,7 @@
     "light": "#7FCFF2",
     "dark": "#006F9F"
   },
-  "favicon": "/favicon-rulx-2026-04-18.svg",
+  "favicon": "/logo-rulx-mark.png",
   "navigation": {
     "global": {
       "anchors": [
@@ -261,8 +261,8 @@
     ]
   },
   "logo": {
-    "light": "/logo/light-rulx-2026-04-18.svg",
-    "dark": "/logo/dark-rulx-2026-04-18.svg",
+    "light": "/logo-rulx-wordmark.png",
+    "dark": "/logo-rulx-wordmark.png",
     "href": "/"
   },
   "navbar": {
